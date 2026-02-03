@@ -115,62 +115,29 @@ CREATE TABLE attendance (
 
 ⚙️ Setup Instructions:
 
-1️⃣ Clone the Project
-bash
+## Installation & Setup
 
-git clone <repository-url>
-cd attendance_tracker
+1. Clone the repository
+   git clone https://github.com/GOHULCV/attendance-tracker.git
 
-2️⃣ Create Virtual Environment (Optional)
-bash
+2. Create virtual environment
+   python -m venv venv
+   venv\Scripts\activate
 
-python -m venv venv
-venv\Scripts\activate
+3. Install dependencies
+   pip install -r requirements.txt
 
-3️⃣ Install Dependencies
-bash
+4. Setup MySQL Database
+   - Create database `attendance_tracker`
+   - Run `database/schema.sql` in MySQL Workbench
 
-pip install -r requirements.txt
+5. Run the application
+   python app.py
 
-4️⃣ Configure Database
+6. Open browser
+   http://127.0.0.1:5000
 
-edit config.py:
-
-MYSQL_HOST = 'localhost'
-MYSQL_USER = 'root'
-MYSQL_PASSWORD = 'your_password'
-MYSQL_DB = 'attendance_tracker'
-SECRET_KEY = 'your_secret_key'
-
-5️⃣ Create Database & Tables
-
-Create database and run the SQL schemas above.
-
-6️⃣ Create Admin User (Hashed Password)
-bash
-
-python
-_____________________________________________________________________________________________
-python
-
-from werkzeug.security import generate_password_hash
-print(generate_password_hash("admin123"))
-
-Insert into MySQL:
-
-INSERT INTO users (name, email, password, role)
-VALUES ('Admin', 'admin@example.com', '<PASTE_HASH>', 'admin');
-
-7️⃣ Run the Application
-bash 
-
-python app.py
-
-Open in browser:
-http://127.0.0.1:5000
-
-
-🔑 Default Login:
+🔑 Default Login: 
 
 Admin
 
