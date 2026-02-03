@@ -1,0 +1,32 @@
+<h2>Attendance Report</h2>
+
+<table border="1" cellpadding="5">
+  <tr>
+    <th>Student Name</th>
+    <th>Date</th>
+    <th>Status</th>
+    {% if role == 'admin' %}
+      <th>Marked By</th>
+    {% endif %}
+  </tr>
+
+  {% for r in records %}
+  <tr>
+    <td>{{ r.student_name }}</td>
+    <td>{{ r.date }}</td>
+    <td>{{ r.status }}</td>
+    {% if role == 'admin' %}
+      <td>{{ r.teacher_name }}</td>
+    {% endif %}
+  </tr>
+  {% endfor %}
+</table>
+
+<br>
+{% if role == 'admin' %}
+<a href="/admin/dashboard">Back to Dashboard</a>
+{% else %}
+<a href="/teacher/dashboard">Back to Dashboard</a>
+{% endif %}
+|
+<a href="/logout">Logout</a>

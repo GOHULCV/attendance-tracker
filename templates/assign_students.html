@@ -1,0 +1,27 @@
+<h2>Assign Students to Teacher</h2>
+
+<form method="post">
+  <label>Teacher:</label>
+  <select name="teacher_id">
+    {% for teacher in teachers %}
+      <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+    {% endfor %}
+  </select>
+
+  <br><br>
+
+  <label>Student:</label>
+  <select name="student_id">
+    {% for student in students %}
+      <option value="{{ student.id }}">{{ student.name }}</option>
+    {% endfor %}
+  </select>
+
+  <br><br>
+
+  <button type="submit">Assign</button>
+</form>
+
+<hr>
+
+<a href="/logout">Logout</a>

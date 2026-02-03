@@ -1,0 +1,16 @@
+<h2>Mark Attendance ({{ today }})</h2>
+
+<form method="post">
+  {% for student in students %}
+    <p>
+      {{ student.name }}
+      <select name="{{ student.id }}">
+        <option value="Present">Present</option>
+        <option value="Absent">Absent</option>
+      </select>
+    </p>
+  {% endfor %}
+  <button type="submit">Submit Attendance</button>
+</form>
+
+<a href="/teacher/dashboard">Back</a>
