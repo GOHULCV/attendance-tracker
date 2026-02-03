@@ -155,3 +155,15 @@ Teacher
 	•	All passwords are securely hashed
 	•	Unauthorized access is restricted using decorators
 	•	Teachers can access only assigned student data
+
+
+
+## Screenshots
+
+Screenshots of the application are available in the screenshots/ folder, including:
+- Login page
+- Admin dashboard
+- Manage teachers & students
+- Student assignment
+- Teacher attendance marking
+- Attendance reports
