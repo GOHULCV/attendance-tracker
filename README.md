@@ -1,47 +1,55 @@
 📘 Attendance Tracker Web Application
 
-A web-based Attendance Management System built using Flask, MySQL, and HTML, designed to help institutions manage students, teachers, and daily attendance with role-based access control.
+A web-based Attendance Management System built using Flask, MySQL, HTML, and CSS, designed to help institutions efficiently manage students, teachers, and daily attendance with secure role-based access control.
 
 ⸻
 
-
-🚀 Features:
+🚀 Features
 
 🔐 Authentication & Authorization
 	•	Secure Login & Logout
 	•	Password hashing using Werkzeug
 	•	Session-based authentication
 	•	Role-based access (Admin / Teacher)
+	•	Route protection using decorators
+
+⸻
 
 👩‍💼 Admin Panel
 	•	Add / Edit / Delete Teachers
 	•	Add / Edit / Delete Students
 	•	Assign students to teachers
 	•	View attendance reports for all students
+	•	Centralized dashboard with quick navigation
+
+⸻
 
 👨‍🏫 Teacher Panel
-	•	View assigned students
+	•	View assigned students only
 	•	Mark daily attendance (Present / Absent)
 	•	Prevent duplicate attendance for the same date
-	•	View attendance reports for assigned students only
+	•	View attendance reports for assigned students
+	•	Clean and focused teacher dashboard
+
+⸻
 
 📊 Attendance Management
 	•	Date-wise attendance tracking
-	•	Student-wise attendance report
+	•	Student-wise attendance reports
 	•	Admin & Teacher specific views
-	•	Data integrity using database constraints
+	•	Visual status indicators (Present / Absent)
+	•	Database-level data integrity using constraints
 
+🧰 Tech Stack
 
-🧰 Tech Stack:
+Layer	Technology
+Frontend	HTML, CSS
+Backend	Python (Flask)
+Database	MySQL
+Security	Werkzeug (Password Hashing)
+Version Control	Git & GitHub
 
-    Layer              Technology
-    Frontend           HTML,CSS
-    Backend            Python(flask)
-    Database           MySQL
-    Security           Werkzeug (Password Hashing)
-
-
-📁 Project Folder Structure:
+📁 Project Folder Structure
 
 attendance_tracker/
 │
@@ -60,19 +68,39 @@ attendance_tracker/
 │   ├── decorators.py
 │
 ├── templates/
+│   ├── base.html
 │   ├── login.html
 │   ├── dashboard.html
+│   ├── teacher_dashboard.html
 │   ├── manage_teachers.html
 │   ├── manage_students.html
 │   ├── assign_students.html
 │   ├── mark_attendance.html
 │   ├── attendance_report.html
-│   |__ teacher_dashboard.html
+│
 ├── static/
-│   └── style.css
+│   └── css/
+│       ├── base.css
+│       ├── login.css
+│       ├── admin.css
+│       ├── teacher.css
+│       ├── manage_teachers.css
+│       ├── manage_students.css
+│       ├── assign_students.css
+│       ├── mark_attendance.css
+│       ├── attendance_report.css
+│
+├── screenshots/
+│   ├── 1_login_page.png
+│   ├── 2_admin_dashboard.png
+│   ├── 3_manage_teachers.png
+│   ├── 4_manage_students.png
+│   ├── 5_assign_students.png
+│   ├── 6_teacher_dashboard.png
+│   ├── 7_mark_attendance.png
+│   ├── 8_attendance_report.png
 
-
-🗄️ Database Schema:
+🗄️ Database Schema
 
 Users Table
 
@@ -93,7 +121,7 @@ CREATE TABLE students (
   class VARCHAR(50)
 );
 
-Teacher-Student Mapping
+Teacher–Student Mapping
 
 CREATE TABLE teacher_student_map (
   id INT AUTO_INCREMENT PRIMARY KEY,
@@ -112,58 +140,71 @@ CREATE TABLE attendance (
   UNIQUE(student_id, date)
 );
 
+⚙️ Setup Instructions
 
-⚙️ Setup Instructions:
+🔧 Installation & Setup
 
-## Installation & Setup
+1.	Clone the repository
 
-1. Clone the repository
-   git clone https://github.com/GOHULCV/attendance-tracker.git
+git clone https://github.com/GOHULCV/attendance-tracker.git
 
-2. Create virtual environment
-   python -m venv venv
-   venv\Scripts\activate
+2.	Create and activate virtual environment
 
-3. Install dependencies
-   pip install -r requirements.txt
+python -m venv venv
+venv\Scripts\activate
 
-4. Setup MySQL Database
-   - Create database `attendance_tracker`
-   - Run `database/schema.sql` in MySQL Workbench
+3.	Install dependencies
 
-5. Run the application
-   python app.py
+pip install -r requirements.txt
 
-6. Open browser
-   http://127.0.0.1:5000
+4.	Setup MySQL Database
 
-🔑 Default Login: 
+•	Create database:
+CREATE DATABASE attendance_tracker;
 
-Admin
+•	Run schema file in MySQL Workbench
 
-Email: admin@example.com
-Password: admin123
+5.	Run the application
 
-Teacher
+python app.py
 
-• Created by Admin via Manage Teachers
-• Uses email & password set by Admin
+6.	Open in browser
 
+http://127.0.0.1:5000
 
-🔒 Security Notes:
+🔑 Default Login Credentials
 
+👩‍💼 Admin
+	•	Email: admin@example.com
+	•	Password: admin123
+
+👨‍🏫 Teacher
+	•	Created by Admin via Manage Teachers
+	•	Login using email & password set by Admin
+
+	•	 Email : teacher@gmail.com
+	•	Password: teacher123
+
+🔒 Security Notes
 	•	All passwords are securely hashed
 	•	Unauthorized access is restricted using decorators
 	•	Teachers can access only assigned student data
+	•	Attendance duplication is prevented at database level
 
+🖼️ Screenshots
 
+Screenshots of the application UI are available in the screenshots/ folder, including:
+	•	Login Page
+	•	Admin Dashboard
+	•	Manage Teachers
+	•	Manage Students
+	•	Assign Students
+	•	Teacher Dashboard
+	•	Mark Attendance
+	•	Attendance Reports
 
-## Screenshots
+🌱 Future Enhancements
 
-Screenshots of the application are available in the screenshots/ folder, including:
-- Login page
-- Admin dashboard
-- Manage teachers & students
-- Student assignment
-- Teacher attendance marking
-- Attendance reports
+	•	Search & filter attendance by date/class
+	•	Email notifications
+	•	Deployment to cloud (Render)
