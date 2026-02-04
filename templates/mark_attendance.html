@@ -1,16 +1,56 @@
-<h2>Mark Attendance ({{ today }})</h2>
+{% extends "base.html" %}
 
-<form method="post">
-  {% for student in students %}
-    <p>
-      {{ student.name }}
-      <select name="{{ student.id }}">
-        <option value="Present">Present</option>
-        <option value="Absent">Absent</option>
-      </select>
-    </p>
-  {% endfor %}
-  <button type="submit">Submit Attendance</button>
-</form>
+{% block title %}Mark Attendance{% endblock %}
 
-<a href="/teacher/dashboard">Back</a>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/mark_attendance.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="mark-attendance-page">
+
+  <!-- Page Header -->
+  <div class="mark-header">
+    <h2>Mark Attendance</h2>
+    <p>Select present or absent for each assigned student</p>
+  </div>
+
+  <!-- Attendance Form -->
+  <form method="post" class="attendance-card">
+
+    {% if students %}
+      {% for student in students %}
+        <div class="student-row">
+          <span class="student-name">
+            {{ student.name }}
+          </span>
+
+          <select name="{{ student.id }}" required>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+          </select>
+        </div>
+      {% endfor %}
+
+      <!-- Submit Button -->
+      <div class="submit-attendance">
+        <button type="submit">Submit Attendance</button>
+      </div>
+
+    {% else %}
+      <p style="text-align:center; color:#6b7280;">
+        No students assigned to you.
+      </p>
+    {% endif %}
+
+  </form>
+
+  <!-- Back Navigation -->
+  <div class="back-link">
+    <a href="/teacher/dashboard">← Back to Dashboard</a>
+  </div>
+
+</section>
+
+{% endblock %}

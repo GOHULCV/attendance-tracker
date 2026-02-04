@@ -1,27 +1,46 @@
-<h2>Assign Students to Teacher</h2>
+{% extends "base.html" %}
 
-<form method="post">
-  <label>Teacher:</label>
-  <select name="teacher_id">
-    {% for teacher in teachers %}
-      <option value="{{ teacher.id }}">{{ teacher.name }}</option>
-    {% endfor %}
-  </select>
+{% block title %}Assign Students{% endblock %}
 
-  <br><br>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/assign_students.css') }}">
+{% endblock %}
 
-  <label>Student:</label>
-  <select name="student_id">
-    {% for student in students %}
-      <option value="{{ student.id }}">{{ student.name }}</option>
-    {% endfor %}
-  </select>
+{% block content %}
+<section class="assign-page">
 
-  <br><br>
+    <header class="page-header">
+        <h2>Assign Students to Teachers</h2>
+        <p>Link students with their respective teachers</p>
+    </header>
 
-  <button type="submit">Assign</button>
-</form>
+    <div class="assign-card">
+        <form method="post" class="assign-form">
 
-<hr>
+            <div class="form-group">
+                <label for="teacher">Select Teacher</label>
+                <select name="teacher_id" id="teacher" required>
+                    {% for teacher in teachers %}
+                        <option value="{{ teacher.id }}">{{ teacher.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
 
-<a href="/logout">Logout</a>
+            <div class="form-group">
+                <label for="student">Select Student</label>
+                <select name="student_id" id="student" required>
+                    {% for student in students %}
+                        <option value="{{ student.id }}">{{ student.name }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <button type="submit" class="btn-primary">
+                Assign Student
+            </button>
+
+        </form>
+    </div>
+
+</section>
+{% endblock %}

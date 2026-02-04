@@ -1,32 +1,78 @@
-<h2>Attendance Report</h2>
+{% extends "base.html" %}
 
-<table border="1" cellpadding="5">
-  <tr>
-    <th>Student Name</th>
-    <th>Date</th>
-    <th>Status</th>
-    {% if role == 'admin' %}
-      <th>Marked By</th>
+{% block title %}Attendance Report{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/attendance_report.css') }}">
+{% endblock %}
+
+{% block content %}
+
+<section class="report-page">
+
+  <!-- Page Header -->
+  <div class="report-header">
+    <h2>Attendance Report</h2>
+    <p>View and analyze student attendance records</p>
+  </div>
+
+  <!-- Report Table Card -->
+  <div class="report-card">
+
+    {% if records %}
+    <table class="report-table">
+      <thead>
+        <tr>
+          <th>Student Name</th>
+          <th>Date</th>
+          <th>Status</th>
+          {% if role == 'admin' %}
+            <th>Marked By</th>
+          {% endif %}
+        </tr>
+      </thead>
+
+      <tbody>
+        {% for r in records %}
+        <tr>
+          <td>{{ r.student_name }}</td>
+          <td>{{ r.date }}</td>
+
+          <td>
+            {% if r.status == 'Present' %}
+              <span class="status-badge present">Present</span>
+            {% else %}
+              <span class="status-badge absent">Absent</span>
+            {% endif %}
+          </td>
+
+          {% if role == 'admin' %}
+            <td>{{ r.teacher_name }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+
+    {% else %}
+      <div class="empty-state">
+        <p>No attendance records found.</p>
+      </div>
     {% endif %}
-  </tr>
 
-  {% for r in records %}
-  <tr>
-    <td>{{ r.student_name }}</td>
-    <td>{{ r.date }}</td>
-    <td>{{ r.status }}</td>
+  </div>
+
+  <!-- Action Buttons -->
+  <div class="report-actions">
     {% if role == 'admin' %}
-      <td>{{ r.teacher_name }}</td>
+      <a href="/admin/dashboard" class="btn secondary">Back to Dashboard</a>
+    {% else %}
+      <a href="/teacher/dashboard" class="btn secondary">Back to Dashboard</a>
     {% endif %}
-  </tr>
-  {% endfor %}
-</table>
 
-<br>
-{% if role == 'admin' %}
-<a href="/admin/dashboard">Back to Dashboard</a>
-{% else %}
-<a href="/teacher/dashboard">Back to Dashboard</a>
-{% endif %}
-|
-<a href="/logout">Logout</a>
+    <a href="/logout" class="btn danger">Logout</a>
+  </div>
+
+</section>
+
+{% endblock %}

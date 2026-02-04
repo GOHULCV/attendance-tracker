@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}Attendance Tracker{% endblock %}</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/base.css') }}">
+
+    {% block styles %}
+    {% endblock %}
+
+</head>
+
+<body>
+
+<!-- ================= HEADER ================= -->
+<header class="header">
+    <div class="container header-content">
+        <h1>Attendance Tracker</h1>
+
+        {% if session.get('role') %}
+            <span class="role-badge">
+                {{ session.get('role')|capitalize }}
+            </span>
+        {% endif %}
+    </div>
+</header>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="navbar">
+    <div class="container nav-links">
+
+        {% if session.get('role') == 'admin' %}
+            <a href="/admin/dashboard">Dashboard</a>
+            <a href="/admin/manage-teachers">Teachers</a>
+            <a href="/admin/manage-students">Students</a>
+            <a href="/admin/assign-students">Assign</a>
+            <a href="/admin/attendance-report">Reports</a>
+        {% endif %}
+
+        {% if session.get('role') == 'teacher' %}
+            <a href="/teacher/dashboard">Dashboard</a>
+            <a href="/teacher/mark-attendance">Mark Attendance</a>
+            <a href="/teacher/attendance-report">Reports</a>
+        {% endif %}
+
+        <a href="/logout" class="logout">Logout</a>
+    </div>
+</nav>
+
+<!-- ================= MAIN CONTENT ================= -->
+<main class="main-container">
+    <div class="container">
+        {% block content %}
+        {% endblock %}
+    </div>
+</main>
+
+<!-- ================= FOOTER ================= -->
+<footer class="footer">
+    <p>© 2026 Attendance Tracker</p>
+</footer>
+
+</body>
+</html>

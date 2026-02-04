@@ -1,0 +1,127 @@
+/* ===============================
+   MARK ATTENDANCE PAGE
+================================ */
+
+.mark-attendance-page {
+  max-width: 1000px;
+  margin: 40px auto;
+  padding: 0 20px;
+}
+
+/* Page Header */
+.mark-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.mark-header h2 {
+  font-size: 26px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+.mark-header p {
+  margin-top: 6px;
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* Attendance Card */
+.attendance-card {
+  background: #dfdfe0;
+  border-radius: 10px;
+  padding: 25px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.06);
+  max-width: 700px;
+  margin: auto;
+}
+
+/* Student Row */
+.student-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.student-row:last-child {
+  border-bottom: none;
+}
+
+.student-name {
+  font-weight: 600;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+/* Select Box */
+.student-row select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #cbd5e1;
+  background-color: #fff;
+}
+
+.student-row select:focus {
+  outline: none;
+  border-color: #2563eb;
+  box-shadow: 0 0 0 2px rgba(37, 99, 235, 0.2);
+}
+
+/* Submit Button */
+.submit-attendance {
+  margin-top: 25px;
+  text-align: center;
+}
+
+.submit-attendance button {
+  background: #2563eb;
+  color: #ffffff;
+  border: none;
+  padding: 10px 26px;
+  font-size: 14px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.2s ease, transform 0.1s ease;
+}
+
+.submit-attendance button:hover {
+  background-color: #1e40af;
+  transform: translateY(-1px);
+}
+
+.submit-attendance button:active {
+  transform: scale(0.97);
+}
+
+/* Back Link */
+.back-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.back-link a {
+  text-decoration: none;
+  color: #2563eb;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.back-link a:hover {
+  text-decoration: underline;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+  .student-row {
+    grid-template-columns: 1fr;
+    gap: 10px;
+  }
+
+  .student-row select {
+    width: 100%;
+  }
+}

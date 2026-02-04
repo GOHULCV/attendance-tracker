@@ -1,0 +1,92 @@
+/* ===============================
+   TEACHER DASHBOARD
+================================ */
+
+.teacher-dashboard {
+    max-width: 1100px;
+    margin: 40px auto;
+    padding: 20px;
+}
+
+.dashboard-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.dashboard-header h2 {
+    font-size: 28px;
+    font-weight: 700;
+    color: #1f2937;
+}
+
+.dashboard-header p {
+    color: #6b7280;
+    margin-top: 6px;
+}
+
+/* ===============================
+   DASHBOARD GRID
+================================ */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 24px;
+}
+
+/* ===============================
+   DASHBOARD CARDS
+================================ */
+
+.dashboard-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    text-decoration: none;
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.08);
+    transition: all 0.25s ease;
+    border-left: 6px solid transparent;
+}
+
+.dashboard-card h3 {
+    font-size: 20px;
+    color: #111827;
+    margin-bottom: 8px;
+}
+
+.dashboard-card p {
+    color: #6b7280;
+    font-size: 14px;
+}
+
+/* Hover Effect */
+.dashboard-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 18px 30px rgba(0, 0, 0, 0.12);
+}
+
+/* ===============================
+   CARD COLORS
+================================ */
+
+.card-attendance {
+    border-left-color: #2563eb;
+}
+
+.card-report {
+    border-left-color: #16a34a;
+}
+
+/* ===============================
+   RESPONSIVE
+================================ */
+
+@media (max-width: 768px) {
+    .teacher-dashboard {
+        padding: 15px;
+    }
+
+    .dashboard-header h2 {
+        font-size: 22px;
+    }
+}

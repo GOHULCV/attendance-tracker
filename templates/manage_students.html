@@ -1,19 +1,66 @@
-<h2>Manage Students</h2>
+{% extends "base.html" %}
 
-<form method="post">
-  <input type="text" name="name" placeholder="Student Name" required>
-  <input type="text" name="roll_no" placeholder="Roll No" required>
-  <input type="text" name="class" placeholder="Class" required>
-  <button type="submit">Add Student</button>
-</form>
+{% block title %}Manage Students{% endblock %}
 
-<hr>
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/manage_students.css') }}">
+{% endblock %}
 
-<h3>Students List</h3>
-<ul>
-  {% for student in students %}
-    <li>{{ student.name }} - {{ student.roll_no }} - {{ student.class }}</li>
-  {% endfor %}
-</ul>
+{% block content %}
+<section class="manage-page">
 
-<a href="/logout">Logout</a>
+    <header class="page-header">
+        <h2>Manage Students</h2>
+        <p>Add, view, and organize student records</p>
+    </header>
+
+    <!-- Add Student -->
+    <div class="form-card">
+        <h3>Add New Student</h3>
+
+        <form method="post" class="student-form">
+            <div class="form-group">
+                <label>Student Name</label>
+                <input type="text" name="name" placeholder="Enter student name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Roll Number</label>
+                <input type="text" name="roll_no" placeholder="Enter roll number" required>
+            </div>
+
+            <div class="form-group">
+                <label>Class</label>
+                <input type="text" name="class" placeholder="Enter class" required>
+            </div>
+
+            <button type="submit" class="btn-primary">Add Student</button>
+        </form>
+    </div>
+
+    <!-- Students Table -->
+    <div class="table-card">
+        <h3>Students List</h3>
+
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Roll No</th>
+                    <th>Class</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for student in students %}
+                <tr>
+                    <td>{{ student.name }}</td>
+                    <td>{{ student.roll_no }}</td>
+                    <td>{{ student.class }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+</section>
+{% endblock %}

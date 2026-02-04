@@ -1,0 +1,182 @@
+/* ===============================
+   ATTENDANCE REPORT PAGE
+   =============================== */
+
+.report-page {
+  max-width: 1200px;
+  margin: 40px auto;
+  padding: 0 20px 40px;
+}
+
+/* ===============================
+   HEADER
+   =============================== */
+
+.report-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.report-header h2 {
+  font-size: 28px;
+  font-weight: 700;
+  color: #1f2937;
+  margin-bottom: 6px;
+}
+
+.report-header p {
+  font-size: 14px;
+  color: #6b7280;
+}
+
+/* ===============================
+   CARD
+   =============================== */
+
+.report-card {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 30px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+}
+
+.report-card {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+/* ===============================
+   TABLE
+   =============================== */
+
+.report-table {
+  width: 100%;
+  border-collapse: collapse;
+  min-width: 700px;
+}
+
+.report-table th {
+  background: linear-gradient(135deg, #2563eb, #1e40af);
+  color: #ffffff;
+  letter-spacing: 0.3px;
+}
+
+.report-table th {
+  padding: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  color: #ffffff;
+  text-align: left;
+}
+
+.report-table td {
+  padding: 14px;
+  font-size: 14px;
+  color: #374151;
+  border-bottom: 1px solid #e5e7eb;
+}
+
+.report-table tbody tr {
+  background-color: #ffffff;
+}
+
+.report-table tbody tr:nth-child(even) {
+  background-color: #f9fafb;
+}
+
+/* ===============================
+   STATUS BADGES
+   =============================== */
+
+.status-badge {
+  padding: 5px 14px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.status-badge.present {
+  background-color: #dcfce7;
+  color: #166534;
+}
+
+.status-badge.absent {
+  background-color: #fee2e2;
+  color: #991b1b;
+}
+
+/* ===============================
+   EMPTY STATE
+   =============================== */
+
+.empty-state {
+  text-align: center;
+  padding: 40px;
+  font-size: 15px;
+  color: #6b7280;
+}
+
+/* ===============================
+   ACTION BUTTONS
+   =============================== */
+
+.report-actions {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+}
+
+.report-actions .btn {
+  padding: 10px 26px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.25s ease;
+}
+
+/* Back Button */
+.btn.secondary {
+  background: #ffffff;
+  color: #1e40af;
+  border: 2px solid #1e40af;
+}
+
+.btn.secondary:hover {
+  background: #1e40af;
+  color: #ffffff;
+}
+
+/* Logout Button */
+.btn.danger {
+  background: #ffffff;
+  color: #dc2626;
+  border: 2px solid #dc2626;
+}
+
+.btn.danger:hover {
+  background: #dc2626;
+  color: #ffffff;
+}
+
+/* ===============================
+   RESPONSIVE
+   =============================== */
+
+@media (max-width: 768px) {
+  .report-table {
+    min-width: 100%;
+  }
+
+  .report-actions {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .report-actions .btn {
+    width: 100%;
+    text-align: center;
+  }
+}

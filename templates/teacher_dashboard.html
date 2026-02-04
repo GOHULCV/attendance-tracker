@@ -1,5 +1,32 @@
-<h1>Teacher Dashboard</h1>
+{% extends "base.html" %}
 
-<a href="/teacher/mark-attendance">Mark Attendance</a><br>
-<a href="/teacher/attendance-report">Attendance Report</a><br><br>
-<a href="/logout">Logout</a>
+{% block title %}Teacher Dashboard{% endblock %}
+
+{% block styles %}
+<link rel="stylesheet" href="{{ url_for('static', filename='css/teacher.css') }}">
+{% endblock %}
+
+{% block content %}
+<section class="teacher-dashboard">
+
+    <header class="dashboard-header">
+        <h2>Teacher Dashboard</h2>
+        <p>Manage attendance and view reports</p>
+    </header>
+
+    <div class="dashboard-grid">
+
+        <a href="/teacher/mark-attendance" class="dashboard-card card-attendance">
+            <h3>📝 Mark Attendance</h3>
+            <p>Record daily attendance for assigned students</p>
+        </a>
+
+        <a href="/teacher/attendance-report" class="dashboard-card card-report">
+            <h3>📊 Attendance Report</h3>
+            <p>View attendance summary and history</p>
+        </a>
+
+    </div>
+
+</section>
+{% endblock %}
